@@ -139,11 +139,4 @@ def get_model_info():
     }), 200
 
 if __name__ == '__main__':
-    print("="*60)
-    print("PUREFLOW AI - WATER QUALITY PREDICTION API")
-    print("="*60)
-    print(f"Model loaded: {model is not None}")
-    print(f"Features: {len(feature_cols)}")
-    print(f"Targets: {len(target_cols)}")
-    print("="*60)
-    api.run(host='0.0.0.0', port=8000, debug=True)
+    api.run(host='0.0.0.0', debug=True)
