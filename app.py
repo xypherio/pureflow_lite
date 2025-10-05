@@ -1,3 +1,6 @@
+import os
+os.environ["PANDAS_USE_PYARROW"] = "0"
+
 import pandas as pd
 from joblib import load
 from flask import Flask, request, jsonify
