@@ -13,10 +13,10 @@ model_info = load('model_info.joblib')
 feature_cols = model_info['feature_cols']
 target_cols = model_info['target_cols']
 
-api = Flask(__name__)
-CORS(api)
+app = Flask(__name__)  # Changed from 'api' to 'app'
+CORS(app)
 
-@api.route('/api/water_quality_prediction', methods=['POST'])
+@app.route('/api/water_quality_prediction', methods=['POST'])
 def water_quality_prediction():
     """
     Predicts water quality parameters based on input features.
@@ -115,7 +115,7 @@ def water_quality_prediction():
             'error': str(e)
         }), 500
 
-@api.route('/api/health', methods=['GET'])
+@app.route('/api/health', methods=['GET'])
 def health_check():
     """Health check endpoint"""
     return jsonify({
@@ -126,7 +126,7 @@ def health_check():
         'targets': target_cols
     }), 200
 
-@api.route('/api/model_info', methods=['GET'])
+@app.route('/api/model_info', methods=['GET'])
 def get_model_info():
     """Get model information"""
     return jsonify({
@@ -142,4 +142,4 @@ def get_model_info():
     }), 200
 
 if __name__ == '__main__':
-    api.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=True)
